@@ -1,0 +1,2 @@
+# JavaScript
+git init
