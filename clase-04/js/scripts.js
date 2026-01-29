@@ -342,3 +342,45 @@
 // }
 
 // multiplicar(4, 5, mostrarResultado);
+
+// Ejercicio Nro 2
+
+function sumar(num1, num2) {
+  return num1 + num2;
+}
+
+function restar(num1, num2) {
+  return num1 - num2;
+}
+
+let numA = prompt("Ingresa el primer número:");
+let numB = prompt("Ingresa el segundo número:"); // retorna string
+
+numA = Number(numA);
+numB = Number(numB);
+
+// console.log(isNaN(numA)); // no es un número
+// console.log(isNaN(numB), !isNaN(numB)); // es un número
+
+console.log(typeof numA, numA, typeof numB, numB);
+
+if (
+  typeof numA === "number" &&
+  typeof numB === "number" &&
+  !isNaN(numA) &&
+  !isNaN(numB)
+) {
+  const resultadoSuma = sumar(numA, numB);
+  const resultadoResta = restar(numA, numB);
+  console.log("La suma es: " + resultadoSuma);
+  console.log("La resta es: " + resultadoResta);
+}
+
+// if (!isNaN(numA) && !isNaN(numB)) {
+//   numA = Number(numA);
+//   numB = Number(numB);
+//   const resultadoSuma = sumar(numA, numB);
+//   const resultadoResta = restar(numA, numB);
+//   console.log("La suma es: " + resultadoSuma);
+//   console.log("La resta es: " + resultadoResta);
+// }
