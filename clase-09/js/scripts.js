@@ -200,3 +200,22 @@
 // item.classList.add("item");
 
 // contenedor.appendChild(item);
+
+// Ejemplo final
+
+const boton = document.getElementById("btnSaludar");
+const contenedor = document.querySelector("#contenedor");
+
+boton.addEventListener("click", () => {
+  const item = document.createElement("p");
+  item.textContent = "Item dinámico";
+  item.classList.add("item");
+  contenedor.appendChild(item);
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("item")) {
+    event.target.classList.toggle("activo");
+  }
+  console.log("click en document");
+});
