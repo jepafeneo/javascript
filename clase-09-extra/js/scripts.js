@@ -32,7 +32,7 @@ console.log(personas);
 //   }
 // };
 
-const esMayorDeEdad = (persona) => persona.edad >= 18;
+// const esMayorDeEdad = (persona) => persona.edad >= 18;
 
 // console.log(esMayorDeEdad(personas[1]));
 
@@ -58,8 +58,48 @@ const esMayorDeEdad = (persona) => persona.edad >= 18;
 
 // const mostrar = persona => console.log(persona);
 
-personas.forEach((persona) => console.log(persona));
+// personas.forEach((persona) => console.log(persona));
 
-for (let i = 1; i <= 10; i++) {
-  console.log(i);
-}
+// for (let i = 1; i <= 10; i++) {
+//   console.log(i);
+// }
+
+// Mostrar en la consola "Ana tiene 22 años" por cada persona
+
+// personas.forEach((persona) => {
+//   console.log(persona.nombre + " tiene " + persona.edad + " años");
+// });
+
+// personas.forEach((persona) => {
+//   console.log(`${persona.nombre} tiene ${persona.edad} años`);
+// });
+
+// const lista = document.getElementById("lista");
+// const lista = document.querySelector("#lista");
+
+// // console.log(lista.textContent);
+
+// const li = document.createElement("li");
+// li.textContent = `${personas[0].nombre} tiene ${personas[0].edad} años`;
+
+// // console.log(li.textContent);
+
+// lista.appendChild(li);
+
+// lista.innerHTML += `<li>${personas[0].nombre} tiene ${personas[0].edad} años</li>`;
+
+// console.log(lista.innerHTML);
+
+// let num = 1;
+
+// num = num + 2;
+// num += 2;
+
+const lista = document.querySelector("#lista");
+
+personas.forEach((persona) => {
+  const li = document.createElement("li");
+  li.textContent = `${persona.nombre} tiene ${persona.edad} años`;
+
+  lista.appendChild(li);
+});

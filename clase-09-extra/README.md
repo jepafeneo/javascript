@@ -1,6 +1,6 @@
 # Clase 09 Extra
 
-- **Variable** → guardar un dato
+- **Variables** → guardar un dato
 - **Condicional (`if`)** → decidir algo
 - **Bucle (`for`)** → repetir algo
 - **Función** → ordenar o reutilizar lógica
