@@ -5,9 +5,10 @@
 - **Bucle (`for`)** → repetir algo
 - **Función** → ordenar o reutilizar lógica
 - **DOM** → mostrar / cambiar algo en la página
-- **Evento** → esperar que el usuario haga algo
-- **Objeto literales** → agrupar datos relacionados
 - **Array** → agrupar datos similares
+- **Objeto literales** → agrupar datos relacionados
+
+- **Evento** → esperar que el usuario haga algo
 
 ## Funciones
 

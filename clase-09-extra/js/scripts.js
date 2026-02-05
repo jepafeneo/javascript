@@ -95,11 +95,44 @@ console.log(personas);
 // num = num + 2;
 // num += 2;
 
+const esMayorDeEdad = (persona) => persona.edad >= 18;
+
 const lista = document.querySelector("#lista");
 
 personas.forEach((persona) => {
   const li = document.createElement("li");
   li.textContent = `${persona.nombre} tiene ${persona.edad} años`;
 
+  //   if (esMayorDeEdad(persona)) {
+  //     li.style.color = "green";
+  //   } else {
+  //     li.style.color = "red";
+  //   }
+
+  li.style.color = esMayorDeEdad(persona) ? "green" : "red";
+
   lista.appendChild(li);
+});
+
+// ---
+
+const listaEdad = document.querySelector("#lista-edad");
+
+const input = document.querySelector("#edadMinima");
+
+input.addEventListener("keyup", () => {
+  //   console.log(input.value);
+  listaEdad.innerHTML = "";
+
+  const edad = input.value;
+
+  personas.forEach((persona) => {
+    // edad <= persona.edad
+    if (persona.edad >= edad) {
+      const li = document.createElement("li");
+      li.textContent = `${persona.nombre} tiene ${persona.edad} años`;
+
+      listaEdad.appendChild(li);
+    }
+  });
 });
