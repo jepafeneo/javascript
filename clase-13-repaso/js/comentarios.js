@@ -1,10 +1,12 @@
-function agregarComentario() {
-  if (inputComentario.value == "") {
-    // console.log("Escribir algo");
-    mensaje.textContent = "Escribir algo";
-    return;
-  }
+function guardarLi() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("OK");
+    }, 2000);
+  });
+}
 
+function crearLi() {
   const li = document.createElement("li");
   li.textContent = inputComentario.value;
 
@@ -27,10 +29,22 @@ function agregarComentario() {
 
   mensaje.textContent = "Agregado correctamente";
 
+  inputComentario.value = "";
+}
+
+function agregarComentario() {
+  if (inputComentario.value == "") {
+    // console.log("Escribir algo");
+    mensaje.textContent = "Escribir algo";
+    return;
+  }
+
+  guardarLi().then(() => {
+    crearLi();
+  });
+
   //   console.log("Click en botón");
   //   console.log(inputComentario.value);
-
-  inputComentario.value = "";
 
   setTimeout(() => {
     mensaje.textContent = "";
