@@ -192,50 +192,92 @@
 //   console.log(response);
 // }
 
-function validarUsuario() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("Usuario validado");
-    }, 2000);
-  });
-}
+// function validarUsuario() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("Usuario validado");
+//     }, 2000);
+//   });
+// }
 
-function cargarDatos() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("Datos cargados");
-    }, 1500);
-  });
-}
+// function cargarDatos() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("Datos cargados");
+//     }, 1500);
+//   });
+// }
 
-// validarUsuario().then((response) => {
+// // validarUsuario().then((response) => {
+// //   console.log(response);
+
+// //   cargarDatos().then((datos) => {
+// //     console.log(datos);
+// //   });
+// // });
+
+// // validarUsuario()
+// //   .then((response) => {
+// //     console.log(response);
+
+// //     return cargarDatos();
+// //   })
+// //   .then((datos) => {
+// //     console.log(datos);
+// //   });
+
+// async function usuario() {
+//   console.log("Iniciar proceso");
+
+//   const response = await validarUsuario();
 //   console.log(response);
 
-//   cargarDatos().then((datos) => {
-//     console.log(datos);
+//   const datos = await cargarDatos();
+//   console.log(datos);
+
+//   console.log("Fin del proceso");
+// }
+
+// usuario();
+
+// Ejercicio
+
+// function guardarPerfil() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("Perfil guardado");
+//     }, 1000);
 //   });
-// });
+// }
 
-// validarUsuario()
-//   .then((response) => {
-//     console.log(response);
+// async function validar() {
+//   console.log("Validando...");
+//   const resultado = await guardarPerfil();
+//   console.log(resultado);
+// }
 
-//     return cargarDatos();
-//   })
-//   .then((datos) => {
-//     console.log(datos);
+// validar();
+
+// ---
+
+// function guardarPerfil() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve("Perfil guardado");
+//     }, 1000);
 //   });
+// }
 
-async function usuario() {
-  console.log("Iniciar proceso");
+// // guardarPerfil().then((response) => {
+// //   console.log(response);
+// // });
 
-  const response = await validarUsuario();
-  console.log(response);
+// async function guardar() {
+//   console.log("Guardando...");
 
-  const datos = await cargarDatos();
-  console.log(datos);
+//   const perfil = await guardarPerfil();
+//   console.log(perfil);
+// }
 
-  console.log("Fin del proceso");
-}
+// guardar();
 
-usuario();
