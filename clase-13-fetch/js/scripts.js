@@ -23,6 +23,10 @@ async function mostrarProducto() {
 
   document.querySelector("#titulo").textContent = product.title;
   document.querySelector("#precio").textContent = `$ ${product.price}`;
+
+  const imagen = document.querySelector("#imagen");
+  imagen.src = product.image;
+  imagen.alt = product.title;
 }
 
 mostrarProducto();
