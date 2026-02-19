@@ -17,20 +17,20 @@ const lista = document.querySelector("#lista");
 //   });
 // });
 
-// import { getUsers } from "./api.js";
-// import { renderUsers } from "./dom.js";
+import { getUsers } from "./api.js";
+import { renderUsers } from "./dom.js";
 
-// button.addEventListener("click", async () => {
-//   try {
-//     lista.textContent = "Cargando...";
+button.addEventListener("click", async () => {
+  try {
+    lista.textContent = "Cargando...";
 
-//     const users = await getUsers();
+    const users = await getUsers();
 
-//     renderUsers(users, lista);
-//   } catch (error) {
-//     lista.textContent = error.message;
-//   }
-// });
+    renderUsers(users, lista);
+  } catch (error) {
+    lista.textContent = error.message;
+  }
+});
 
 // const users = [
 //   { id: 1, name: "Leanne Graham", email: "Sincere@april.biz" },
