@@ -36,13 +36,13 @@ button.addEventListener("click", async () => {
   }
 });
 
-search.addEventListener("search", (event) => {
-  // console.log(event.target.value)
-  const filtered = filterUsers(usersState, event.target.value);
-  renderUsers(filtered, lista);
-});
+// search.addEventListener("search", (event) => {
+//   // console.log(event.target.value)
+//   const filtered = filterUsers(usersState, event.target.value);
+//   renderUsers(filtered, lista);
+// });
 
-search.addEventListener("keyup", (event) => {
+search.addEventListener("input", (event) => {
   // console.log(event.target.value)
   const filtered = filterUsers(usersState, event.target.value);
   renderUsers(filtered, lista);
