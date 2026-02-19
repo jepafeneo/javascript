@@ -32,3 +32,18 @@ const lista = document.querySelector("#lista");
 //   }
 // });
 
+// const users = [
+//   { id: 1, name: "Leanne Graham", email: "Sincere@april.biz" },
+//   { id: 2, name: "Ervin Howell", email: "Shanna@melissa.tv" },
+//   { id: 3, name: "Clementine Bauch", email: "Nathan@yesenia.net" },
+// ];
+
+// // const userNames = users.map((user) => user.name);
+
+// // console.log(userNames, users);
+
+// import { mapUserNames } from "./logic.js";
+
+// const userNames = mapUserNames(users);
+
+// console.log(userNames, users);
