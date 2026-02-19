@@ -1,3 +1,4 @@
+const search = document.querySelector("#search");
 const button = document.querySelector("#load");
 const lista = document.querySelector("#lista");
 
@@ -17,19 +18,34 @@ const lista = document.querySelector("#lista");
 //   });
 // });
 
+let usersState = [];
+
 import { getUsers } from "./api.js";
 import { renderUsers } from "./dom.js";
+import { filterUsers } from "./logic.js";
 
 button.addEventListener("click", async () => {
   try {
     lista.textContent = "Cargando...";
 
-    const users = await getUsers();
+    usersState = await getUsers();
 
-    renderUsers(users, lista);
+    renderUsers(usersState, lista);
   } catch (error) {
     lista.textContent = error.message;
   }
+});
+
+search.addEventListener("search", (event) => {
+  // console.log(event.target.value)
+  const filtered = filterUsers(usersState, event.target.value);
+  renderUsers(filtered, lista);
+});
+
+search.addEventListener("keyup", (event) => {
+  // console.log(event.target.value)
+  const filtered = filterUsers(usersState, event.target.value);
+  renderUsers(filtered, lista);
 });
 
 // const users = [
