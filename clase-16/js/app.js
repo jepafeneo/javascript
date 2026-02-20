@@ -6,7 +6,7 @@ const load = document.querySelector("#load");
 const search = document.querySelector("#search");
 const list = document.querySelector("#list");
 const status = document.querySelector("#status");
-const clear = document.querySelector("#clear");
+const btnClear = document.querySelector("#clear");
 
 const state = {
   products: [],
@@ -62,6 +62,6 @@ function handleSearch(e) {
   renderProducts(state.filtered, list);
 }
 
-clear.addEventListener("click", clear);
+btnClear.addEventListener("click", clear);
 load.addEventListener("click", loadProducts);
 search.addEventListener("input", handleSearch);
