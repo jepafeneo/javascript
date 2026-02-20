@@ -1,5 +1,5 @@
 export function renderProducts(products, listEl) {
-  listEl.innerHTML = "";
+  listEl.textContent = "";
 
   products.forEach((p) => {
     const li = document.createElement("li");
