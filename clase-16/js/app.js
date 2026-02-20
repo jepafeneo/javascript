@@ -16,13 +16,22 @@ const state = {
   loaded: false,
 };
 
-function clear() {
+function reset() {
+  search.value = "";
+  state.error = null;
+  state.filtered = state.products;
+  setStatus(status, "");
+}
+
+function handleClear() {
+  reset();
   state.filtered = state.products;
   renderProducts(state.filtered, list);
 }
 
-async function loadProducts(params) {
+async function loadProducts() {
   try {
+    reset();
     state.loading = true;
     state.error = null;
     setStatus(status, "Cargando...");
@@ -62,6 +71,6 @@ function handleSearch(e) {
   renderProducts(state.filtered, list);
 }
 
-btnClear.addEventListener("click", clear);
+btnClear.addEventListener("click", handleClear);
 load.addEventListener("click", loadProducts);
 search.addEventListener("input", handleSearch);
