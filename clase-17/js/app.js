@@ -1,12 +1,15 @@
 import { getProducts } from "./api.js";
 import { renderProducts, setStatus } from "./dom.js";
 import { filterProducts } from "./logic.js";
+import { Store } from "./store.js";
 
 const load = document.querySelector("#load");
 const search = document.querySelector("#search");
 const list = document.querySelector("#list");
 const status = document.querySelector("#status");
 const btnClear = document.querySelector("#clear");
+
+const store = new Store();
 
 const state = {
   products: [],
@@ -32,24 +35,22 @@ function handleClear() {
 async function loadProducts() {
   try {
     reset();
-    state.loading = true;
-    state.error = null;
+    store.setLoading(true);
+    store.setError(null);
     setStatus(status, "Cargando...");
 
     const data = await getProducts();
 
-    state.products = data;
-    state.filtered = data;
-    state.loaded = true;
+    store.setProducts(data);
 
-    renderProducts(state.products, list);
+    renderProducts(store.getProducts(), list);
     setStatus(status, "");
   } catch (error) {
-    state.error = error.message;
-    setStatus(status, state.error);
+    store.setError(error.message);
+    setStatus(status, store.getError());
   } finally {
-    state.loading = false;
-    console.log(state.loading);
+    store.setLoading(false);
+    // console.log(store.getLoading());
   }
 }
 
