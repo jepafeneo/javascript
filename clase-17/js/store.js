@@ -15,6 +15,10 @@ export class Store {
     return this.loading;
   }
 
+  getLoaded() {
+    return this.loaded;
+  }
+
   getError() {
     return this.error;
   }
@@ -31,5 +35,18 @@ export class Store {
 
   setError(value) {
     this.error = value;
+  }
+
+  filter(query) {
+    const q = query.trim().toLowerCase();
+
+    if (q === "") {
+      this.filtered = this.products;
+      return;
+    }
+
+    this.filtered = this.products.filter((p) =>
+      p.title.toLowerCase().includes(q),
+    );
   }
 }

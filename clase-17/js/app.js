@@ -55,13 +55,14 @@ async function loadProducts() {
 }
 
 function handleSearch(e) {
-  if (!state.loaded) {
+  if (!store.getLoaded()) {
     setStatus(status, "Primero tenes que cargar los productos");
     return;
   }
 
   const query = e.target.value;
-  state.filtered = filterProducts(state.products, query);
+  // state.filtered = filterProducts(state.products, query);
+  store.filter(query);
 
   if (state.filtered.length == 0) {
     setStatus(status, "Sin resultados");
@@ -69,7 +70,7 @@ function handleSearch(e) {
     setStatus(status, "");
   }
 
-  renderProducts(state.filtered, list);
+  renderProducts(store.getProducts(), list);
 }
 
 btnClear.addEventListener("click", handleClear);
