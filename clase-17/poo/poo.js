@@ -63,38 +63,206 @@
 
 // ---
 
-const users = [
-  { id: 1, email: "maria@example.com", password: "qwe" },
-  { id: 3, email: "juan@example.com", password: "1234" },
+// class Session {
+//   constructor() {
+//     this.userId = null;
+//   }
+
+//   check(email, password) {
+//     const userFind = users.find(
+//       (u) => email === u.email && password === u.password,
+//     );
+
+//     if (userFind) {
+//       this.userId = userFind.id;
+//       return true;
+//     }
+
+//     return false;
+//   }
+// }
+
+// ---
+
+// class Session {
+//   constructor() {
+//     this.iniciada = false;
+//     this.userId = null;
+//   }
+
+//   Check(email, password) {
+//     const user = users.find(
+//       (u) => u.email === email && u.password === password,
+//     );
+
+//     if (user) {
+//       this.userId = user.id;
+//       this.iniciada = true;
+//       return true;
+//     }
+
+//     return false;
+//   }
+// }
+
+// ---
+
+// class Session {
+//   constructor() {
+//     this.user = null;
+//   }
+//   check(email, password) {
+//     const usersFind = users.find(
+//       (user) => user.email === email && user.password === password,
+//     );
+//     if (usersFind) {
+//       this.user = usersFind;
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+//   getUser() {
+//     return this.user;
+//   }
+// }
+
+// ---
+
+// class checkUser {
+//   constructor() {
+//     this.userId = null;
+//   }
+
+//   check(email, password) {
+//     const userFind = users.find(
+//       (u) => email == u.email && password == u.password,
+//     );
+
+//     if (userFind) {
+//       this.userId = userFind.id;
+//       return true;
+//     }
+
+//     return false;
+//   }
+// }
+
+// ---
+
+// const usuarios = [
+//   { id: 1, email: "maria@example.com", password: "qwe" },
+//   { id: 3, email: "juan@example.com", password: "1234" },
+// ];
+
+// const user = {
+//   name: "Juan",
+//   email: "juan@example.com",
+//   password: "1234",
+// };
+
+// // const session = {
+// //   userId: null,
+// //   check(email, password) {
+// //     const userFind = users.find(
+// //       (u) => email == u.email && password == u.password,
+// //     );
+
+// //     if (userFind) {
+// //       this.userId = userFind.id;
+// //     }
+// //   },
+// // };
+
+// // session.check(user.email, user.password);
+
+// class checkUser {
+//   constructor(users) {
+//     this.users = users;
+//     this.userId = null;
+//   }
+
+//   check(email, password) {
+//     const userFind = this.users.find(
+//       (u) => email == u.email && password == u.password,
+//     );
+
+//     if (userFind) {
+//       this.userId = userFind.id;
+//       return true;
+//     }
+
+//     return false;
+//   }
+// }
+
+// const session = new checkUser(usuarios);
+
+// console.log(session);
+
+// session.check(user.email, user.password);
+
+// console.log(session);
+
+// // ---
+
+// // class Producto {
+// //   constructor(nombre) {
+// //     this.nombre = nombre;
+// //   }
+// // }
+
+// // const producto1 = new Producto("Producto 1");
+
+const jsonProductos = [
+  { id: 1, title: "Producto 1", price: 100, oferta: true },
+  { id: 2, title: "Producto 2", price: 200, oferta: false },
+  { id: 3, title: "Producto 3", price: 300, oferta: true },
+  { id: 4, title: "Producto 4", price: 400, oferta: false },
+  { id: 5, title: "Producto 5", price: 500, oferta: true },
 ];
 
-const user = {
-  name: "Juan",
-  email: "juan@example.com",
-  password: "1234",
-};
+class Producto {
+  constructor(id, title, price, oferta) {
+    this.id = id;
+    this.title = title;
+    this.price = price;
+    this.oferta = oferta;
+  }
 
-const session = {
-  userId: null,
-  check(email, password) {
-    // console.log(email, password);
+  getOferta() {
+    this.oferta;
+  }
+}
 
-    // users.forEach((u) => {
-    //   console.log(u);
-    //   if (email == u.email && password == u.password) {
-    //     console.log("password correcto");
-    //     this.userId = u.id;
-    //   }
-    // });
+class Catalogo {
+  // Array de instancias de Producto
+  constructor(productos) {
+    this.productos = productos;
+  }
 
-    const userFind = users.find(
-      (u) => email == u.email && password == u.password,
-    );
+  getOfertas() {
+    return this.productos.filter((p) => p.getOferta() == true);
+  }
+}
 
-    if (userFind) {
-      this.userId = userFind.id;
-    }
-  },
-};
+// const productos = [];
 
-session.check(user.email, user.password);
+// jsonProductos.forEach((p) => {
+//   // { id: 1, title: "Producto 1", price: 100, oferta: true }
+//   const producto = new Producto(p.id, p.title, p.price, p.oferta);
+//   // console.log(producto);
+//   productos.push(producto);
+// });
+
+// p = { id: 1, title: "Producto 1", price: 100, oferta: true }
+const productos = jsonProductos.map(
+  (p) => new Producto(p.id, p.title, p.price, p.oferta),
+);
+
+console.log(productos);
+
+const catalogo = new Catalogo(productos);
+
+console.log(catalogo);
+console.log(catalogo.getOfertas());
