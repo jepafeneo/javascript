@@ -1,3 +1,4 @@
+// data
 const products = [
   { id: 1, title: "Camisa", price: 100, oferta: true },
   { id: 2, title: "Zapato", price: 200, oferta: false },
@@ -56,6 +57,16 @@ function filterByOffers(products, onlyOffers) {
   return filtered;
 }
 
+function countProducts(products) {
+  return products.length;
+}
+
+// Coordinación
+function applyFilters(products, query, onlyOffers) {
+  const filtered = filterByQuery(products, query);
+  return filterByOffers(filtered, onlyOffers);
+}
+
 // DOM
 function renderList(products) {
   const list = document.querySelector("#list");
@@ -75,13 +86,23 @@ function renderMessage(products) {
   msg.textContent = products.length === 0 ? "Sin resultados" : "";
 }
 
+function renderResults(total) {
+  const counter = document.querySelector("#counter");
+  counter.textContent = `Resultados: ${total}`;
+}
+
 // Coordinación
 function renderAndFilter() {
   const query = getQuery();
   const onlyOffers = getOnlyOffers();
 
-  let filtered = filterByQuery(products, query);
-  filtered = filterByOffers(filtered, onlyOffers);
+  // let filtered = filterByQuery(products, query);
+  // filtered = filterByOffers(filtered, onlyOffers);
+
+  const filtered = applyFilters(products, query, onlyOffers);
+
+  const total = countProducts(filtered);
+  renderResults(total);
 
   renderList(filtered);
   renderMessage(filtered);
@@ -94,3 +115,5 @@ document.querySelector("#search").addEventListener("keyup", renderAndFilter);
 document
   .querySelector("#onlyOffers")
   .addEventListener("change", renderAndFilter);
+
+// Crear archivos para dom, logic, products y pasar lo que corresponda a cada uno. Importar lo necesario en app.js y probar que todo siga funcionando.
