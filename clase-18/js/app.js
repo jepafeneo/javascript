@@ -5,32 +5,86 @@ const products = [
   { id: 4, title: "Pantalón", price: 150, oferta: false },
 ];
 
-function renderAndFilter() {
-  const list = document.querySelector("#list");
-  const input = document.querySelector("#search");
-  const checkbox = document.querySelector("#onlyOffers");
-  const msg = document.querySelector("#msg");
+/*
+- DOM
+  - document.querySelector
+  - list.innerHTML = "";
+  - const li = document.createElement("li");
 
-  const query = input.value.trim().toLowerCase();
-  const onlyOffers = checkbox.checked;
+- Lógica
+  - filtered = filtered.filter((p) => p.title.toLowerCase().includes(query));
+
+- Internet
+  - fetch()
+
+- Coordinación
+  - loadProducts()
+*/
+
+// DOM
+function getQuery() {
+  // const input = document.querySelector("#search");
+  // return input.value.trim().toLowerCase();
+
+  return document.querySelector("#search").value.trim().toLowerCase();
+}
+
+// DOM
+function getOnlyOffers() {
+  // const checkBox = document.querySelector("#onlyOffers");
+  // return checkBox.checked;
+
+  return document.querySelector("#onlyOffers").checked;
+}
+
+// Lógica
+function filterByQuery(products, query) {
+  return products.filter((p) => p.title.toLowerCase().includes(query));
+}
+
+// Lógica
+function filterByOffers(products, onlyOffers) {
+  // if (!onlyOffers) return products;
+  // return products.filter((p) => p.oferta === true);
 
   let filtered = products;
 
-  filtered = filtered.filter((p) => p.title.toLowerCase().includes(query));
-
   if (onlyOffers) {
-    filtered = filtered.filter((p) => p.oferta === true);
+    filtered = products.filter((p) => p.oferta === true);
   }
+
+  return filtered;
+}
+
+// DOM
+function renderList(products) {
+  const list = document.querySelector("#list");
 
   list.innerHTML = "";
 
-  filtered.forEach((p) => {
+  products.forEach((p) => {
     const li = document.createElement("li");
     li.textContent = `${p.title} - $${p.price} ${p.oferta ? "(Oferta)" : ""}`;
     list.appendChild(li);
   });
+}
 
-  msg.textContent = filtered.length === 0 ? "Sin resultados" : "";
+// DOM
+function renderMessage(products) {
+  const msg = document.querySelector("#msg");
+  msg.textContent = products.length === 0 ? "Sin resultados" : "";
+}
+
+// Coordinación
+function renderAndFilter() {
+  const query = getQuery();
+  const onlyOffers = getOnlyOffers();
+
+  let filtered = filterByQuery(products, query);
+  filtered = filterByOffers(filtered, onlyOffers);
+
+  renderList(filtered);
+  renderMessage(filtered);
 }
 
 renderAndFilter();
