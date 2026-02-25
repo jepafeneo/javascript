@@ -441,7 +441,7 @@ class Libro {
   }
 }
 
-const libro1 = new Libro(22, "Quijote", "Cervantes");
+// const libro1 = new Libro(22, "Quijote", "Cervantes");
 
 // console.log(libro1.getTitulo());
 // console.log(libro1.getAutor());
@@ -458,16 +458,103 @@ const libro1 = new Libro(22, "Quijote", "Cervantes");
 
 // ---
 
+// const libros = [
+//   new Libro(1, "El Quijote", "Miguel de Cervantes"),
+//   new Libro(2, "Cien años de soledad", "Gabriel García Márquez"),
+//   new Libro(3, "La sombra del viento", "Carlos Ruiz Zafón"),
+//   new Libro(4, "El amor en los tiempos del cólera", "Gabriel García Márquez"),
+//   new Libro(5, "Don Juan Tenorio", "José"),
+// ];
+
+// ---
+
+// class Biblioteca {
+//   constructor(libros) {
+//     this.libros = libros;
+//   }
+
+//   getLibros() {
+//     return this.libros;
+//   }
+// }
+
+// const bibliotecaPisoUno = new Biblioteca(libros);
+
+// console.log(bibliotecaPisoUno);
+
+// ---
+
 // Crear clase `Biblioteca`:
 
 // - constructor(libros)
 // - getLibros()
+// - addLibro(libro)
+// - buscarPorTitulo(texto)
+// - prestarLibro(id)
+// - devolverLibro(id)
 
-// ---
+// - countDisponibles()
+// - getPrestados()
+
+// - eliminarLibro(id)
+
+// - getAutoresUnicos()
+
+// https://www.w3schools.com/js/js_sets.asp
 
 class Biblioteca {
-  constructor(libros) {
+  constructor(libros = []) {
     this.libros = libros;
+  }
+
+  getLibros() {
+    return this.libros;
+  }
+
+  addLibro(libro) {
+    this.libros.push(libro);
+  }
+
+  buscarPorTitulo(texto) {
+    return this.libros.filter((libro) =>
+      libro.getTitulo().toLowerCase().includes(texto.toLowerCase()),
+    );
+  }
+
+  //   buscarPorTituloEstricto(titulo) {
+  //     return this.libros.find(
+  //       (libro) => libro.getTitulo().toLowerCase() == titulo.toLowerCase(),
+  //     );
+  //   }
+
+  findById(id) {
+    return this.libros.find((libro) => libro.id === id);
+  }
+
+  prestarLibro(id) {
+    const libro = this.findById(id);
+    // console.log(libro);
+
+    if (!libro) return false;
+    return libro.prestar();
+
+    // if (libro) {
+    //   return libro.prestar(); // true o false dependiendo de si se pudo prestar o no
+    // } else {
+    //   return false;
+    // }
+  }
+
+  devolverLibro(id) {
+    const libro = this.findById(id);
+
+    if (!libro) return false;
+    return libro.devolver();
+    // if (libro) {
+    //   return libro.devolver();
+    // } else {
+    //   return false;
+    // }
   }
 }
 
@@ -476,9 +563,23 @@ const libros = [
   new Libro(2, "Cien años de soledad", "Gabriel García Márquez"),
   new Libro(3, "La sombra del viento", "Carlos Ruiz Zafón"),
   new Libro(4, "El amor en los tiempos del cólera", "Gabriel García Márquez"),
-  new Libro(5, "Don Juan Tenorio", "José"),
 ];
 
 const bibliotecaPisoUno = new Biblioteca(libros);
 
-console.log(bibliotecaPisoUno);
+// const libroNuevo = new Libro(3, "El principito", "Antoine de Saint-Exupéry");
+// bibliotecaPisoUno.addLibro(libroNuevo);
+
+// console.log(bibliotecaPisoUno.getLibros());
+
+// const filtrados = bibliotecaPisoUno.buscarPorTitulo("el");
+// console.log(filtrados);
+
+// const elLibro = bibliotecaPisoUno.buscarPorTituloEstricto("El Quijote");
+// console.log(elLibro);
+
+let prestar = bibliotecaPisoUno.prestarLibro(2);
+console.log(prestar);
+
+// prestar = bibliotecaPisoUno.prestarLibro(1);
+// console.log(prestar);
