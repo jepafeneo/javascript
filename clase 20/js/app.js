@@ -41,6 +41,13 @@ import { getUsers } from "./api.js";
 //   getUsers()
 //     .then((users) => {
 //       console.log(users);
+
+//       const lista = document.querySelector("#list");
+//       users.forEach((user) => {
+//         const li = document.createElement("li");
+//         li.textContent = `${user.firstName} ${user.lastName}`;
+//         lista.appendChild(li);
+//       });
 //     })
 //     .catch((error) => {
 //       console.log("Error al cargar usuarios:", error.message);
@@ -51,6 +58,30 @@ async function loadUsers() {
   try {
     const users = await getUsers();
     console.log(users);
+
+    // console.log(
+    //   users
+    //     .map((user) => `<li>${user.firstName} ${user.lastName}</li>`)
+    //     .join()
+    // );
+
+    // document.querySelector("#list").innerHTML = users
+    //   .map((user) => `<li>${user.firstName} ${user.lastName}</li>`)
+    //   .join();
+
+    // const userList = document.querySelector("#list");
+    // users.forEach((user) => {
+    //   const listItem = document.createElement("li");
+    //   listItem.textContent = `${user.firstName} ${user.lastName}`;
+    //   userList.appendChild(listItem);
+    // });
+
+    const lista = document.querySelector("#list");
+    users.forEach((user) => {
+      const li = document.createElement("li");
+      li.textContent = `${user.firstName} ${user.lastName}`;
+      lista.appendChild(li);
+    });
   } catch (error) {
     console.log(error.message);
   }
