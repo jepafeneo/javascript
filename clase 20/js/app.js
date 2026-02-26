@@ -36,6 +36,7 @@
 // api -> internet
 
 import { getUsers } from "./api.js";
+import { renderList } from "./dom.js";
 
 // function loadUsers() {
 //   getUsers()
@@ -56,7 +57,10 @@ import { getUsers } from "./api.js";
 
 async function loadUsers() {
   try {
-    const users = await getUsers();
+    const query = document.querySelector("#search").value.trim().toLowerCase();
+    // console.log(!query, query == "", query);
+
+    const users = await getUsers(query);
     console.log(users);
 
     // console.log(
@@ -76,15 +80,16 @@ async function loadUsers() {
     //   userList.appendChild(listItem);
     // });
 
-    const lista = document.querySelector("#list");
-    users.forEach((user) => {
-      const li = document.createElement("li");
-      li.textContent = `${user.firstName} ${user.lastName}`;
-      lista.appendChild(li);
-    });
+    renderList(users);
   } catch (error) {
     console.log(error.message);
   }
 }
 
 document.querySelector("#load").addEventListener("click", loadUsers);
+document.querySelector("#search").addEventListener("keyup", (event) => {
+  //   console.log(event);
+  if (event.key == "Enter") {
+    loadUsers();
+  }
+});
