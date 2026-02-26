@@ -556,6 +556,75 @@ class Biblioteca {
     //   return false;
     // }
   }
+
+  countDisponibles() {
+    const disponibles = this.libros.filter((libro) => libro.isDisponible());
+    return disponibles.length;
+  }
+
+  getPrestados() {
+    const prestados = this.libros.filter((libro) => !libro.isDisponible());
+    return prestados;
+  }
+
+  countPrestados() {
+    const prestados = this.libros.filter(
+      (libro) => libro.isDisponible() == false,
+    );
+    return prestados.length;
+  }
+
+  // eliminarLibro(id) {
+  //   const libro = this.findById(id);
+  //   if (libro) {
+  //     this.libros = this.libros.filter((l) => l.id !== id);
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
+  // eliminarLibro(id) {
+  //   const eliminado = this.libros.filter((libro) => libro.id != id);
+  //   this.libros = eliminado;
+  //   return true;
+  // }
+
+  eliminarLibro(id) {
+    const libro = this.findById(id);
+    if (!libro) return false;
+
+    const cantidadAntes = this.libros.length;
+    this.libros = this.libros.filter((libro) => libro.id != id);
+    // console.log(this.libros.length, cantidadAntes);
+    return this.libros.length < cantidadAntes;
+  }
+
+  // getAutoresUnicos() {
+  //   const autores = this.libros.map((libro) => libro.getAutor());
+  //   const autoresUnicos = new Set(autores);
+  //   return autoresUnicos;
+  // }
+
+  // countAutoresUnicos() {
+  //   const autores = this.libros.map((libro) => libro.getAutor());
+  //   const autoresUnicos = new Set(autores);
+  //   return autoresUnicos.size;
+  // }
+
+  getAutoresUnicos() {
+    const autores = this.libros.map((libro) => libro.getAutor());
+    console.log(new Set(autores));
+    // Spread
+    return [...new Set(autores)];
+  }
+
+  countAutoresUnicos() {
+    const autores = this.libros.map((libro) => libro.getAutor());
+    // console.log(new Set(autores));
+    // Spread
+    return [...new Set(autores)].length;
+  }
 }
 
 const libros = [
@@ -566,6 +635,17 @@ const libros = [
 ];
 
 const bibliotecaPisoUno = new Biblioteca(libros);
+
+console.log(bibliotecaPisoUno.getAutoresUnicos());
+
+// console.log(bibliotecaPisoUno.eliminarLibro(45));
+
+// bibliotecaPisoUno.prestarLibro(2);
+// bibliotecaPisoUno.prestarLibro(4);
+
+// // console.log(bibliotecaPisoUno.countDisponibles());
+// console.log(bibliotecaPisoUno.getPrestados());
+// console.log(bibliotecaPisoUno.countPrestados());
 
 // const libroNuevo = new Libro(3, "El principito", "Antoine de Saint-Exupéry");
 // bibliotecaPisoUno.addLibro(libroNuevo);
@@ -578,8 +658,8 @@ const bibliotecaPisoUno = new Biblioteca(libros);
 // const elLibro = bibliotecaPisoUno.buscarPorTituloEstricto("El Quijote");
 // console.log(elLibro);
 
-let prestar = bibliotecaPisoUno.prestarLibro(2);
-console.log(prestar);
+// let prestar = bibliotecaPisoUno.prestarLibro(2);
+// console.log(prestar);
 
 // prestar = bibliotecaPisoUno.prestarLibro(1);
 // console.log(prestar);
