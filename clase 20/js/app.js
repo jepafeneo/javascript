@@ -37,4 +37,23 @@
 
 import { getUsers } from "./api.js";
 
-function loadUsers() {}
+// function loadUsers() {
+//   getUsers()
+//     .then((users) => {
+//       console.log(users);
+//     })
+//     .catch((error) => {
+//       console.log("Error al cargar usuarios:", error.message);
+//     });
+// }
+
+async function loadUsers() {
+  try {
+    const users = await getUsers();
+    console.log(users);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+document.querySelector("#load").addEventListener("click", loadUsers);

@@ -5,8 +5,8 @@ export async function getUsers() {
     throw new Error("Error al obtener usuarios");
   }
 
-  const users = await response.json();
+  const data = await response.json();
 
-//   console.log(users);
-  return users;
+  // console.log(data);
+  return data.users;
 }
