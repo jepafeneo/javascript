@@ -29,6 +29,7 @@ export class Biblioteca {
 
   prestarLibro(id) {
     const libro = this.findById(id);
+    // console.log(libro, !null)
     if (!libro) return false;
     return libro.prestar();
   }
@@ -48,8 +49,8 @@ export class Biblioteca {
   }
 
   eliminarLibro(id) {
-    const before = this.libros.length;
-    this.libros = this.libros.filter((l) => l.getId() !== id);
+    const before = this.libros.length; // 4
+    this.libros = this.libros.filter((l) => l.getId() !== id); // 3
     return this.libros.length !== before;
   }
 
