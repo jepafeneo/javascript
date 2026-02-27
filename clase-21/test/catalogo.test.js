@@ -85,27 +85,29 @@ describe("Clase Biblioteca", () => {
 });
 
 describe("Clase Libro", function () {
+  let libro;
+
+  beforeEach(() => {
+    libro = new Libro(5, "Uno", "Dos");
+  });
+
   it("inicia disponible en true", () => {
-    const libro = new Libro(5, "Uno", "Dos");
     assert.isTrue(libro.isDisponible());
   });
 
   it("prestar cambia disponible a false", () => {
-    const libro = new Libro(5, "Uno", "Dos");
     assert.isTrue(libro.prestar());
     assert.isFalse(libro.isDisponible());
   });
 
   it("prestar dos veces: la segunda falla", () => {
-    const libro = new Libro(5, "Uno", "Dos");
     assert.isTrue(libro.prestar());
     assert.isFalse(libro.prestar());
   });
 
   it("devolver vuelve disponible a true", () => {
-    const libro = new Libro(5, "Uno", "Dos");
     assert.isTrue(libro.prestar());
-    
+
     assert.isTrue(libro.devolver());
     assert.isTrue(libro.isDisponible());
   });
