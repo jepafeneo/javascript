@@ -1,10 +1,12 @@
-import { Biblioteca } from "./Biblioteca.js";
+// import { Biblioteca } from "./Biblioteca.js";
 
-const biblioteca = new Biblioteca(["Uno", "Dos", "Tres"]);
+// const biblioteca = new Biblioteca(["Uno", "Dos", "Tres"]);
 
-const libros = biblioteca.getLibros();
+// const libros = biblioteca.getLibros();
 
-libros.push("Cuatro");
-console.log(libros);
+// libros.push("Cuatro");
+// console.log(libros);
 
-console.log(biblioteca);
+// console.log(biblioteca);
+
+
