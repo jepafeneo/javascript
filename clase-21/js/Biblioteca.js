@@ -39,7 +39,6 @@ export class Biblioteca {
     return libro.devolver();
   }
 
-  // ---- Tarea / extras (los 4 métodos)
   countDisponibles() {
     return this.libros.filter((l) => l.isDisponible()).length;
   }
